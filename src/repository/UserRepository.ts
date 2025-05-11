@@ -22,15 +22,17 @@ export class UsersRepository {
     }
 
     change(newUser: IUser): IUser {
+        let updateUser = newUser;
         this.users = this.users.map((user) => {
             if (newUser.id === user.id) {
                 user.updateFields(newUser);
+                updateUser = user;
             }
 
             return user;
         });
 
-        return newUser;
+        return updateUser;
     }
 
     delete(id: IUser["id"]): boolean {

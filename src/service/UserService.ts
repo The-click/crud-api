@@ -2,18 +2,18 @@ import { IUser, User } from "./../models/User";
 import { UsersRepository } from "../repository/UserRepository";
 import { v4 as uuidv4 } from "uuid";
 
-class UserService {
+export class UserService {
     userRepository: UsersRepository;
 
     constructor() {
         this.userRepository = new UsersRepository();
     }
 
-    getAllUser(): User[] {
+    getAllUser(): IUser[] {
         return this.userRepository.getAllUsers();
     }
 
-    getUser(id: IUser["id"]): User {
+    getUser(id: IUser["id"]): IUser {
         if (!this.validateUuid(id)) {
             throw new Error("The id is invalid");
         }
@@ -55,24 +55,25 @@ class UserService {
         return true;
     }
 
-    updateUser(user: IUser): Boolean {
-        if (!this.validateUuid(user.id)) {
+    updateUser(id: IUser["id"], user: IUser): IUser {
+        if (!this.validateUuid(id)) {
             throw new Error("The id is invalid");
         }
 
-        const oldUser = this.userRepository.findById(user.id);
+        const oldUser = this.userRepository.findById(id);
 
         if (!oldUser) {
             throw new Error("The user was not found");
         }
 
         if (!this.validateUser(user)) {
+            console.log(user);
             throw new Error("All required fields are not filled in");
         }
 
-        this.userRepository.change(user);
+        const updateuser = this.userRepository.change(user);
 
-        return true;
+        return updateuser;
     }
 
     validateUuid(uuid: string): boolean {
@@ -83,9 +84,12 @@ class UserService {
 
     validateUser(user: IUser) {
         for (const property in user) {
+            console.log({ property, value: user[property as keyof IUser] });
             if (property in user && !user[property as keyof IUser]) {
                 return false;
             }
         }
+
+        return true;
     }
 }
