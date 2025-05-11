@@ -36,7 +36,7 @@ export class UsersRepository {
     }
 
     delete(id: IUser["id"]): boolean {
-        this.users = this.users.filter((user) => user.id === id);
+        this.users = this.users.filter((user) => user.id !== id);
 
         return true;
     }
