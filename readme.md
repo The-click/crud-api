@@ -9,13 +9,13 @@ This is a simple CRUD API. It allows creating, reading, updating, and deleting u
 ## Installation
 
 1. Clone the repository:
-   `git clone https://github.com/nyurasheva/simple-crud-api.git`
+   `git clone git@github.com:The-click/crud-api.git`
 
 2. Navigate to the project directory:
-   `cd simple-crud-api`
+   `cd crud-api`
 
 3. Switch to the development branch:
-   `git checkout develop`
+   `git checkout dev`
 
 4. Install dependencies:
    `npm install`
