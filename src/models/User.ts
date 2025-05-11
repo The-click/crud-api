@@ -37,15 +37,15 @@ export class User implements IUser {
     }
 
     validateFill(): boolean {
-        if (!this.username) {
+        if (!this.username || typeof this.username !== "string") {
             return false;
         }
 
-        if (!this.age && this.age !== 0) {
+        if ((!this.age && this.age !== 0) || typeof this.age !== "number") {
             return false;
         }
 
-        if (!this.hobbies) {
+        if (!this.hobbies || !Array.isArray(this.hobbies)) {
             return false;
         }
 
