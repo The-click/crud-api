@@ -90,7 +90,6 @@ export class UserService {
 
     validateUser(user: IUser) {
         for (const property in user) {
-            console.log({ property, value: user[property as keyof IUser] });
             if (
                 !["username", "age", "hobbies", "id"].includes(property) ||
                 (!user[property as keyof IUser] && property !== "age")
@@ -110,3 +109,5 @@ export class UserService {
         return true;
     }
 }
+
+export const userService = new UserService();

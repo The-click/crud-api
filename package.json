@@ -7,7 +7,8 @@
     "main": "main.ts",
     "scripts": {
         "start:prod": "webpack --mode production && node dist/bundle.js",
-        "start:dev": "ts-node-dev --respawn ./src/main.ts"
+        "start:dev": "ts-node-dev --respawn ./src/main.ts",
+        "start:multi": "ts-node-dev --respawn ./src/multi.ts"
     },
     "devDependencies": {
         "@types/node": "^22.15.17",

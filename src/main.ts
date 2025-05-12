@@ -51,7 +51,6 @@ http.createServer(async function (request, response) {
 
             if (answer) {
                 base = "User deleted";
-                console.log(base);
                 response.statusCode = statusCode.DELETED;
             }
         }
@@ -114,7 +113,7 @@ http.createServer(async function (request, response) {
 
         response.setHeader("Content-Type", "text/html; charset=utf-8;");
         response.write(JSON.stringify(base, null, 2));
-        response.end();
+        response.end("");
     } catch (error) {
         const errorMessage = { ...baseError, ...userServiceError };
         const mapErrorWithCode = {

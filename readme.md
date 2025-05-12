@@ -85,3 +85,5 @@ Default endpoint: http://localhost:3000/api/users
   2. Second `GET` request addressed to `localhost:4002/api` should return created user
   3. Third `DELETE` request addressed to `localhost:4003/api` deletes created user
   4. Fourth `GET` request addressed to `localhost:4001/api` should return **404** status code for created user
+
+
